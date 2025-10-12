@@ -2,9 +2,7 @@
 #include <string>   // Allows me to use text/string variables
 using namespace std;
 
-
 // CLASS TO REPRESENT A PLACE
-
 class Place {
 public:
     // BASIC DETAILS ABOUT THE PLACE
@@ -20,24 +18,37 @@ public:
              << " (as of " << yearRecorded << ")" << endl;
         cout << "Leader: " << leader << endl;
     }
+
+    // SMALL GREETING FUNCTION (NEW)
+    void greet() {
+        cout << "\nWelcome to the Places program!" << endl;
+    }
 };
 
 // MAIN PROGRAM STARTS HERE
-
 int main() {
     cout << "=== Places of the World Program ===" << endl;
 
-    // Create an example place to test
+    // CREATE AN EXAMPLE PLACE TO TEST
     Place example;
 
-    // Fill in details
+    // FILL IN DETAILS
     example.name = "Oxford";
     example.population = 152000;
     example.yearRecorded = 2024;
     example.leader = "Councillor Susan Brown";
 
-    // Show the information
+    // SHOW THE INFORMATION
+    example.greet();       // CALL THE NEW GREETING FUNCTION
     example.showDetails();
 
-    return 0; // Program finished successfully
+    // TODO: Add more places dynamically in future
+    Place london;
+    london.name = "London";
+    london.population = 9000000;
+    london.yearRecorded = 2024;
+    london.leader = "Mayor Sadiq Khan";
+    london.showDetails();
+
+    return 0; // PROGRAM FINISHES SUCCESSFULLY
 }
