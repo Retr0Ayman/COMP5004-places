@@ -1,54 +1,65 @@
 #include <iostream>
-#include <string>   // Allows me to use text/string variables
+#include <string>
 using namespace std;
 
-// CLASS TO REPRESENT A PLACE
+// Class To Represent A Place
 class Place {
 public:
-    // BASIC DETAILS ABOUT THE PLACE
-    string name;          // Name of the place
-    int population;       // How many people live there
-    int yearRecorded;     // Year when the population was recorded
-    string leader;        // Name of the leader
+    // Basic Details
+    string name;
+    int population;
+    int yearRecorded;
+    string leader;
+    string address;
+    string history;
+    double latitude;
+    double longitude;
 
-    // FUNCTION THAT SHOWS THE DETAILS OF A PLACE
+    // Show All Details
     void showDetails() {
-        cout << "\nPlace: " << name << endl;
-        cout << "Population: " << population
-             << " (as of " << yearRecorded << ")" << endl;
+        cout << "\n--- Place Information ---" << endl;
+        cout << "Name: " << name << endl;
+        cout << "Population: " << population << " (as of " << yearRecorded << ")" << endl;
         cout << "Leader: " << leader << endl;
-    }
-
-    // SMALL GREETING FUNCTION (NEW)
-    void greet() {
-        cout << "\nWelcome to the Places program!" << endl;
+        cout << "Address: " << address << endl;
+        cout << "History: " << history << endl;
+        cout << "Coordinates: (" << latitude << ", " << longitude << ")" << endl;
     }
 };
 
-// MAIN PROGRAM STARTS HERE
+// Main Program
 int main() {
-    cout << "=== Places of the World Program ===" << endl;
+    cout << "=== Places of the World ===" << endl;
 
-    // CREATE AN EXAMPLE PLACE TO TEST
-    Place example;
+    Place p; // Create One Place To Test
 
-    // FILL IN DETAILS
-    example.name = "Oxford";
-    example.population = 152000;
-    example.yearRecorded = 2024;
-    example.leader = "Councillor Susan Brown";
+    cout << "\nEnter Place Name: ";
+    getline(cin, p.name);
 
-    // SHOW THE INFORMATION
-    example.greet();       // CALL THE NEW GREETING FUNCTION
-    example.showDetails();
+    cout << "Enter Population: ";
+    cin >> p.population;
 
-    // TODO: Add more places dynamically in future
-    Place london;
-    london.name = "London";
-    london.population = 9000000;
-    london.yearRecorded = 2024;
-    london.leader = "Mayor Sadiq Khan";
-    london.showDetails();
+    cout << "Enter Year Recorded: ";
+    cin >> p.yearRecorded;
+    cin.ignore(); // Clear Leftover newline
 
-    return 0; // PROGRAM FINISHES SUCCESSFULLY
+    cout << "Enter Leader's Name: ";
+    getline(cin, p.leader);
+
+    cout << "Enter Address: ";
+    getline(cin, p.address);
+
+    cout << "Enter a Short History: ";
+    getline(cin, p.history);
+
+    cout << "Enter Latitude: ";
+    cin >> p.latitude;
+    cout << "Enter Longitude: ";
+    cin >> p.longitude;
+
+    // Show The Result
+    p.showDetails();
+
+    cout << "\nThank You For Using My Program!" << endl;
+    return 0;
 }
