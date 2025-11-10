@@ -2,66 +2,52 @@
 
 #include <iostream>
 #include <string>
-#include "Place.h" // I need to include my new "Place.h" blueprint
+#include "PlaceManager.h" // I only need to include my manager
 
 using namespace std;
 
-// My Place class definition is gone from here. It's now split
-// into Place.h and Place.cpp, which is much cleaner and required by the assignment.
-
-// Main Program
+// My main() function is just a simple menu.
+// All the real work is done by my PlaceManager object.
 int main() {
-    cout << "=== Places of the World ===" << endl;
 
-    // Here, I'm creating one instance (object) of my Place class.
-    // My default constructor (from Place.cpp) runs automatically here.
-    Place p; 
+    // 1. I create my one instance of PlaceManager.
+    // The constructor will now automatically call loadFromFile().
+    PlaceManager manager;
 
-    // I'll create some temporary variables to store the user's input
-    // before I pass it to my object.
-    string tempString;
-    int tempInt;
-    double tempDouble;
+    int choice = 0;
 
-    cout << "\nEnter Place Name: ";
-    getline(cin, tempString);
-    p.setName(tempString); // Instead of p.name = ..., I now use my public setter function.
+    // I'll loop until the user chooses option 4.
+    while (choice != 4) {
+        cout << "\n=== Places of the World Menu ===" << endl;
+        cout << "1. Add a new place" << endl;
+        cout << "2. Show all places" << endl;
+        cout << "3. Find a place by name" << endl; // I'm adding this option for later
+        cout << "4. Save and Exit" << endl;
+        cout << "Enter your choice: ";
 
-    cout << "Enter Population: ";
-    cin >> tempInt;
-    p.setPopulation(tempInt); // Use the setter
+        cin >> choice;
+        cin.ignore(); // I clear the newline character
 
-    cout << "Enter Year Recorded: ";
-    cin >> tempInt;
-    p.setYearRecorded(tempInt); // Use the setter
-    
-    // I need to use cin.ignore() here to clear the leftover newline
-    // character after 'cin >> tempInt', otherwise my next 'getline' will fail.
-    cin.ignore(); 
+        if (choice == 1) {
+            manager.addNewPlace();
+        }
+        else if (choice == 2) {
+            manager.showAllPlaces();
+        }
+        else if (choice == 3) {
+            // We haven't built this yet, but we'll add it next.
+            cout << "Feature coming soon!" << endl;
+            // manager.findPlaceByName();
+        }
+        else if (choice == 4) {
+            // When the user wants to exit, I'll call my save function first.
+            manager.saveToFile();
+            cout << "Data saved. Exiting program. Goodbye!" << endl;
+        }
+        else {
+            cout << "Invalid choice, please try again." << endl;
+        }
+    }
 
-    cout << "Enter Leader's Name: ";
-    getline(cin, tempString);
-    p.setLeader(tempString); // Use the setter
-
-    cout << "Enter Address: ";
-    getline(cin, tempString);
-    p.setAddress(tempString); // Use the setter
-
-    cout << "Enter a Short History: ";
-    getline(cin, tempString);
-    p.setHistory(tempString); // Use the setter
-
-    cout << "Enter Latitude: ";
-    cin >> tempDouble;
-    p.setLatitude(tempDouble); // Use the setter
-
-    cout << "Enter Longitude: ";
-    cin >> tempDouble;
-    p.setLongitude(tempDouble); // Use the setter
-
-    // I call my public function to show the details I just set.
-    p.showDetails();
-
-    cout << "\nThank You For Using My Program!" << endl;
     return 0;
 }

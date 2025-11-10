@@ -1,14 +1,13 @@
 // File: Place.cpp
+// This is the IMPLEMENTATION and it defines how those functions work.
 
-#include "Place.h"   // I need to include my "Place.h" blueprint file here.
-#include <iostream> // I need <iostream> so I can use 'cout' to print to the console.
+#include "Place.h"   // <-- Include the blueprint we just made
+#include <iostream>  // <-- For std::cout
+#include <string>    // <-- For std::string
 
-using namespace std;
+using namespace std; // This is fine in a .cpp file
 
 //  Constructor Code
-// This is the code for my constructor. I'm setting some default values
-// just in case I create an object but don't set all its data.
-// I have to use "Place::" to tell C++ these functions belong to my Place class.
 Place::Place() {
     name = "Unknown";
     population = 0;
@@ -21,8 +20,6 @@ Place::Place() {
 }
 
 // Setter Function Code
-
-// This function takes 'newName' from the outside and assigns it to my private 'name' variable.
 void Place::setName(string newName) {
     name = newName;
 }
@@ -47,13 +44,11 @@ void Place::setHistory(string newHistory) {
     history = newHistory;
 }
 
-// For latitude and longitude, I can add a simple check
-// to make sure the data is valid before I set it.
 void Place::setLatitude(double newLat) {
     if (newLat >= -90.0 && newLat <= 90.0) {
         latitude = newLat;
     } else {
-        latitude = 0.0; // Set a safe default if input is bad
+        latitude = 0.0; // Set a safe default
     }
 }
 
@@ -65,20 +60,43 @@ void Place::setLongitude(double newLon) {
     }
 }
 
-// Getter Function Code
-// These just return the value of the private variable.
-string Place::getName() {
+
+//  Getter Function Code
+string Place::getName() const {
     return name;
 }
 
-int Place::getPopulation() {
+int Place::getPopulation() const {
     return population;
 }
 
-//  Other Function Code
-// This is the code for my showDetails function. It can access the private
-// variables directly because this function is part of the Place class.
-void Place::showDetails() {
+int Place::getYearRecorded() const {
+    return yearRecorded;
+}
+
+string Place::getLeader() const {
+    return leader;
+}
+
+string Place::getAddress() const {
+    return address;
+}
+
+string Place::getHistory() const {
+    return history;
+}
+
+double Place::getLatitude() const {
+    return latitude;
+}
+
+double Place::getLongitude() const {
+    return longitude;
+}
+
+
+//   Other Function Code
+void Place::showDetails() const {
     cout << "\n--- Place Information ---" << endl;
     cout << "Name: " << name << endl;
     cout << "Population: " << population << " (as of " << yearRecorded << ")" << endl;
