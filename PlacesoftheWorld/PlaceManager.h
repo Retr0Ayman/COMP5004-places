@@ -3,46 +3,49 @@
 #pragma once // My standard include guard
 #include "Place.h" // I need to include Place.h so this class knows what a "Place" object is
 
-// (I will need to include <iostream>, <string>, and <fstream> in my .cpp file)
-
-// This is the blueprint for my "database" or "manager" class.
-// Its whole job is to manage my collection of Place objects.
+// This is the blueprint for my manager class.
+// Its job is to look after my collection of Place objects.
 class PlaceManager {
 
-    // Private Data Members
-    // I'm keeping my data private, just like in my Place class.
 private:
-    // My coursework says I need to store at least 100 places.
-    // A simple array is the easiest way to start.
+    // My coursework says I must store at least 100 places.
+    // A simple array is the easiest approach.
     Place allPlaces[100];
 
-    // This variable is super important. It will keep track of
-    // how many places I've actually added to my array.
+    // This variable keeps track of how many places I have stored.
     int placeCount;
 
-    // --- My Private Helper Functions ---
-    // I'm making this private because my main() doesn't need to call it.
-    // My constructor (below) will call this automatically when the program starts.
+    // Private helper that loads the data from the file.
+    // My constructor will call this automatically.
     void loadFromFile();
 
-
-    // Public Interface
-    // These are the public "buttons" my main() function will press.
 public:
-    // This is my constructor for the PlaceManager.
-    // (In my .cpp file, I'll make sure this calls loadFromFile())
+    // Constructor (in my .cpp it calls loadFromFile)
     PlaceManager();
 
-    // --- My Main Menu Functions ---
+    // --- Main Menu Functions ---
 
-    // This will be for menu option "1. Add a new place"
+    // 1. Add a new place
     void addNewPlace();
 
-    // Tis will be for menu option "2. Show all places"
+    // 2. Show all places
     void showAllPlaces();
 
-    // This will be for my main menu's "Save and Exit" option
+    // 3. Save data to file (used by "Save and Exit")
     void saveToFile();
 
-    // (I will add more functions here later, like findPlaceByName())
+    // 4. Delete a place by name
+    void deletePlace();
+
+    // 5. Find a place by its name
+    void findPlaceByName();
+
+    // 6. Update/edit an existing place
+    void updatePlace();
+
+    // 7. Show just one field (e.g. only names) for all places
+    void showFieldForAllPlaces();
+
+    // 8. Calculate the distance between two places
+    void distanceBetweenTwoPlaces();
 };

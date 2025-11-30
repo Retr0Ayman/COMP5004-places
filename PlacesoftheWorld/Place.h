@@ -1,11 +1,11 @@
 // File: Place.h
 // This is the BLUEPRINT. It only declares what functions exist.
 
-#pragma once       // Include guard: Prevents this from being included multiple times
+#pragma once       // Include guard: Tells the complier, to include the header file once per compilation
 #include <string>  // <-- We need this because we use std::string below
 
 class Place {
-    // --- Private Data Members ---
+    // Private Data Members
 private:
     std::string name;
     int population;
